@@ -1,5 +1,11 @@
-import { Customers, columns } from "./columns"
-import { DataTable } from "./customers-table"
+import { Customers, columns } from "./columns";
+import { DataTable } from "./customers-table";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "BLVING - Customers",
+  description: "BLVING Application Transactions",
+}
 
 async function getData(): Promise<Customers[]> {
   // Fetch data from your API here.
@@ -75,15 +81,17 @@ async function getData(): Promise<Customers[]> {
       email: "ri@mavegoid.is",
     },
     // ...
-  ]
+  ];
 }
 
 export default async function CustomersPage() {
-  const data = await getData()
+  const data = await getData();
 
   return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
-    </div>
-  )
+    <>
+      <div className="container-fluid mx-auto px-10 py-10">
+        <DataTable columns={columns} data={data} />
+      </div>
+    </>
+  );
 }

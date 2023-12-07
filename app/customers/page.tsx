@@ -45,14 +45,13 @@ async function getCustomers() {
     }
     return res.json();
   } catch (error) {
-    console.error("Error fetching customers: ", error);
+    console.error("Error: ", error);
     throw error;
   }
 }
 
 export default async function CustomersPage() {
   const data = await getData();
-  console.log(data);
   return (
     <>
       <div className="container-fluid mx-auto px-10 py-10">

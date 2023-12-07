@@ -7,7 +7,7 @@ const connectMongoDB = async () => {
     } else {
       throw new Error("MONGODB_URI is undefined");
     }
-    console.log("Connected to MongoDB.");
+    // console.log("Connected to MongoDB.");
   } catch (error) {
     console.log(error);
   }

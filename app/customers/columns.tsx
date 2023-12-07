@@ -18,14 +18,13 @@ import {
 // You can use a Zod schema here if you want.
 export type Customers = {
   id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
   name: string;
-  email: string;
+  address: string;
+  company: string;
 };
 
 export const columns: ColumnDef<Customers>[] = [
-  {
+    {
     id: "select",
     header: ({ table }) => (
       <Checkbox
@@ -48,10 +47,6 @@ export const columns: ColumnDef<Customers>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
     accessorKey: "name",
     header: ({ column }) => {
       return (
@@ -64,38 +59,33 @@ export const columns: ColumnDef<Customers>[] = [
         </Button>
       );
     },
-    // header: ({ column }) => (
-    //   <DataTableColumnHeader column={column} title="Name" />
-    // ),
   },
   {
-    accessorKey: "email",
-    // header: ({ column }) => (
-    //   <DataTableColumnHeader column={column} title="Email" />
-    // ),
+    accessorKey: "address",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Address
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "PHP",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
+    accessorKey: "company",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Company
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
     },
   },
   {

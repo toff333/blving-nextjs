@@ -1,0 +1,40 @@
+###
+
+GET http://localhost:3000/api/customers/ HTTP/1.1
+
+###
+
+# Sorting query
+GET http://localhost:3000/api/customers?sort=first_name&order=desc HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/customers/65607bb489ee30bdc449a81c HTTP/1.1
+
+###
+# Create a new customer
+POST http://localhost:3000/api/customers/ HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Jay",
+    "last_name": "Z",
+    "address": "US",
+    "company": "Apple"
+}
+
+###
+
+PUT http://localhost:3000/api/customers/65608864c81626d72620090e HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Johnny",
+    "last_name": "Bravo",
+    "address": "TEST",
+    "company": "Harvey Norman"
+}
+
+###
+
+DELETE http://localhost:3000/api/customers/65618f88eee63a113edfb0aa HTTP/1.1
